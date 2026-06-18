@@ -18,6 +18,17 @@
 *   **語言與環境**：PowerShell (Windows)、Python 3.12+、Node.js。
 *   **自動化驅動**：Playwright / pytest。
 
+### 3. 駕馭工程專屬工作流 (Harness Engineering Workflows)
+*   **#執行模型比較與蒸餾 (Model Comparison & Distillation)**:
+    1.  **載入專案**：接收使用者指定的「低階模型產出路徑」與「高階模型產出路徑」。
+    2.  **平行比對**：載入 `promptfoo-comparative-evaluator` 技能，產生雙方結構與程式碼的對比矩陣 (Comparative Matrix)。
+    3.  **自動化評分**：載入 `deepeval-judge-framework` 技能，對雙方進行獨立打分，產生包含推論 (CoT) 的評估報告。
+    4.  **知識蒸餾**：載入 `reflexion-prompt-distiller` 技能，將評估報告中的缺失轉換為通用的系統防護欄。
+    5.  **產出**：輸出 `elevation_prompt.md` 供使用者後續注入至低階模型。
+*   **#執行安全紅隊演練 (Security Red Teaming)**:
+    1.  **載入技能**：啟動 `llm-red-team-garak` 技能，針對指定的模型或 Agent 發動自動化攻擊（含 Prompt Injection 與 Jailbreak）。
+    2.  **產出報告**：輸出 `red_team_report.md`，分析安全漏洞並提供具體修復方案。
+
 ---
 
 ## 🛠️ 開發與協作規範
